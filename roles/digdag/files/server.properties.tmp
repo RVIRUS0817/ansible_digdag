@@ -1,0 +1,8 @@
+database.type = postgresql
+database.user = 
+database.password = 
+database.host = 
+database.port = 5432
+database.database = 
+digdag.secret-access-policy-file = /etc/digdag/secret-access-policy.yaml
+digdag.secret-encryption-key = Mxxxxxxxxxxxxxxxxx==

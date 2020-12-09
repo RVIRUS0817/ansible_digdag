@@ -1,0 +1,5 @@
+- name: Download embulk
+  get_url:
+    url: https://dl.embulk.org/embulk-latest.jar
+    dest: /usr/local/bin/embulk
+    mode: '0755'

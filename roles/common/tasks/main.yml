@@ -1,0 +1,17 @@
+- name: install common package
+  yum:  pkg={{item}} state=latest
+  loop:
+    - gcc
+    - gcc-c++
+    - git
+    - nmap
+    - libselinux-python
+    - wget
+    - openssl-devel
+    - readline-devel
+    - htop
+    - postgresql
+
+- name: set a hostname
+  hostname:
+    name: "{{ hostname }}"

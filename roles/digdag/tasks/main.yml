@@ -1,0 +1,59 @@
+- name: install java 8
+  yum:  pkg=java-1.8.0-openjdk-devel.x86_64 state=latest
+
+- name: correct java version selected
+  alternatives:
+    name: java
+    path: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.265.b01-1.amzn2.0.1.x86_64/jre/bin/java
+
+- name: make directory /etc/digdag
+  file: path=/etc/digdag state=directory owner=root group=root mode=0755
+
+- name: make directory /var/log/digdag
+  file: path=/var/log/digdag state=directory owner=root group=root mode=0755
+
+- name: make directory application digdag log
+  file: path=/var/log/digdag/{{ item.src }} state=directory owner=root group=root mode=0755
+  loop:
+    - { src: accesslogs }
+    - { src: tasklogs }
+
+- name: Download digdag
+  get_url:
+    url: https://dl.digdag.io/digdag-latest
+    dest: /usr/local/bin/digdag
+    mode: '0755'
+
+- name: copy systemctl digdag.service
+  copy:
+    src: "roles/digdag/files/digdag.service"
+    dest: "/etc/systemd/system/"
+    backup: no
+    owner: root
+    group: root
+    mode: 0644
+
+- name: copy server.properties
+  copy:
+    src: "roles/digdag/files/server.properties.tmp"
+    dest: "/etc/digdag/"
+    backup: no
+    owner: root
+    group: root
+    mode: 0644
+
+- name: copy secret-access-policy.yaml
+  copy:
+    src: "roles/digdag/files/secret-access-policy.yaml"
+    dest: "/etc/digdag/"
+    backup: no
+    owner: root
+    group: root
+    mode: 0644
+
+- name: digdag start
+  systemd:
+    name: digdag.service
+    state: restarted
+    daemon_reload: yes
+    enabled: yes

@@ -1,0 +1,9 @@
+[Unit]
+Description=digdag
+
+[Service]
+Restart=always
+ExecStart=/bin/sh -c "/usr/local/bin/digdag server --config /etc/digdag/server.properties -b 0.0.0.0 --memory --log /var/log/digdag/digdag_server.log --task-log /var/log/digdag/tasklogs --access-log /var/log/digdag/accesslogs"
+
+[Install]
+WantedBy=multi-user.target
