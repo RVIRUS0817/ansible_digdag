@@ -7,8 +7,9 @@
 
 - Amazon linux2
 - RDS(PostgreSQL 12)
-- digdag
-- embulk
+- Java v1.8.0_265
+- Digdag v0.9.42
+- Embulk v0.9.23
 
 ## dry-run
 
