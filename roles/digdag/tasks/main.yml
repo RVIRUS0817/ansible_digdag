@@ -42,15 +42,6 @@
     group: root
     mode: 0644
 
-- name: copy secret-access-policy.yaml
-  copy:
-    src: "roles/digdag/files/secret-access-policy.yaml"
-    dest: "/etc/digdag/"
-    backup: no
-    owner: root
-    group: root
-    mode: 0644
-
 - name: digdag start
   systemd:
     name: digdag.service

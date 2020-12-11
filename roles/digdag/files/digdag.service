@@ -2,8 +2,12 @@
 Description=digdag
 
 [Service]
+Type=simple
+User=hoge
+WorkingDirectory=/etc/digdag
 Restart=always
-ExecStart=/bin/sh -c "/usr/local/bin/digdag server --config /etc/digdag/server.properties -b 0.0.0.0 --memory --log /var/log/digdag/digdag_server.log --task-log /var/log/digdag/tasklogs --access-log /var/log/digdag/accesslogs"
+ExecStart=/bin/sh -c "/usr/local/bin/digdag server --max-task-threads 2 --config /etc/digdag/server.properties -b 0.0.0.0 --log /var/log/digdag/digdag_server.log --task-log /var/log/digdag/tasklogs --access-log /var/log/digdag/accesslogs"
+KillMode=process
 
 [Install]
 WantedBy=multi-user.target

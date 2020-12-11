@@ -6,7 +6,7 @@
 ## Environment
 
 - Amazon linux2
-- RDS(PostgreSQL)
+- RDS(PostgreSQL 12)
 - digdag
 - embulk
 
@@ -22,7 +22,24 @@ $ ansible-playbook -i hosts prd.yml -C
 $ ansible-playbook -i hosts prd.yml 
 ```
 
+## Make DB
+
+```
+CREATE ROLE digdag WITH PASSWORD 'xxxxxxxx' NOSUPERUSER NOCREATEDB NOCREATEROLE LOGIN;
+
+GRANT digdag TO root;
+
+CREATE DATABASE digdag_db WITH OWNER digdag;
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+```
+
 ## Settiong server.properties.tmp
+
+- digdag.secret-encryption-key
+```
+echo -n '16_bytes_phrase!' | openssl base64
+```
 
 ```
 sudo su -
