@@ -42,9 +42,10 @@ echo -n '16_bytes_phrase!' | openssl base64
 ```
 
 ```
-sudo su -
-cd /etc/digdag
-cp server.properties.tmp server.properties
-vim server.properties
-systemctl restart digdag
+$ sudo su -
+# cd /etc/digdag
+# cp server.properties.tmp server.properties
+# vim server.properties
+# digdag server --config server.properties
+# systemctl restart digdag
 ```
