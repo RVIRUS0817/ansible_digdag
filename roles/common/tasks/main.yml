@@ -1,5 +1,8 @@
-- name: rpm psql
+- name: install rpm psql
   shell: rpm -ivh --nodeps https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+
+- name: install mysql-repo
+  yum:  pkg=https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm state=latest
 
 - name: copy pgdg-redhat-all.repo
   copy:
@@ -23,6 +26,7 @@
     - readline-devel
     - htop
     - postgresql12
+    - mysql-community-client
 
 - name: set a hostname
   hostname:
