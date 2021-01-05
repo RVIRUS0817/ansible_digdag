@@ -46,6 +46,7 @@ echo -n '16_bytes_phrase!' | openssl base64
 
 ```
 $ sudo su -
+# chown -R hoge:hoge /var/log/digdag
 # cd /etc/digdag
 # cp server.properties.tmp server.properties
 # vim server.properties
