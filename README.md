@@ -26,13 +26,13 @@ $ ansible-playbook -i hosts prd.yml
 ## Make DB
 
 ```
-$ psql -h digdag.xxxxxxxx.xxxxxxx.rds.amazonaws.com -U root -d redash_db
+$ psql -h digdag.xxxxxxxx.xxxxxxx.rds.amazonaws.com -U root -d digdag_db
  
 CREATE ROLE digdag WITH PASSWORD 'xxxxxxxx' NOSUPERUSER NOCREATEDB NOCREATEROLE LOGIN;
 GRANT digdag TO root;
 CREATE DATABASE digdag_db WITH OWNER digdag;
     
-$ psql -h digdag.xxxxxxxx.xxxxxxx.rds.amazonaws.com -U digdag -d redash_db
+$ psql -h digdag.xxxxxxxx.xxxxxxx.rds.amazonaws.com -U digdag -d digdag_db
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 ```
