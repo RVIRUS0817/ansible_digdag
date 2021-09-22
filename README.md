@@ -53,3 +53,10 @@ $ sudo su -
 # digdag server --config server.properties
 # systemctl restart digdag
 ```
+
+## Setting digdag secrets
+
+```
+digdag secrets --local --set gcp.credential=/opt/digdag/key.json
+digdag secrets --project hoge --set gcp.credential=@/opt/digdag/key.json
+```

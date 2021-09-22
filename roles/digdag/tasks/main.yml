@@ -7,13 +7,13 @@
     path: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.265.b01-1.amzn2.0.1.x86_64/jre/bin/java
 
 - name: make directory /etc/digdag
-  file: path=/etc/digdag state=directory owner=root group=root mode=0755
+  file: path=/etc/digdag state=directory owner=adachin group=adachin mode=0755
 
 - name: make directory /var/log/digdag
-  file: path=/var/log/digdag state=directory owner=root group=root mode=0755
+  file: path=/var/log/digdag state=directory owner=adachin group=adachin mode=0755
 
 - name: make directory application digdag log
-  file: path=/var/log/digdag/{{ item.src }} state=directory owner=root group=root mode=0755
+  file: path=/var/log/digdag/{{ item.src }} state=directory owner=adachin group=adachin mode=0755
   loop:
     - { src: accesslogs }
     - { src: tasklogs }

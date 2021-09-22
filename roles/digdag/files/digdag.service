@@ -3,7 +3,7 @@ Description=digdag
 
 [Service]
 Type=simple
-User=hoge
+User=adachin
 WorkingDirectory=/etc/digdag
 Restart=always
 ExecStart=java -Dio.digdag.cli.launcher=selfrun -XX:+AggressiveOpts -XX:TieredStopAtLevel=1 -Xverify:none -jar /usr/local/bin/digdag server --max-task-threads 2 --config server.properties -b 0.0.0.0 --log /var/log/digdag/digdag_server.log --task-log /var/log/digdag/tasklogs --access-log /var/log/digdag/accesslogs
